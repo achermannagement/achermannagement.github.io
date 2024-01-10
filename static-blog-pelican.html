@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Joshua Achermann" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
+
+    <title>How to make a static blog with Pelican - Joshua Achermann</title>
+
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
+
+
+      <link rel="stylesheet" href="/theme/css/pygment.css" />
+      <link rel="stylesheet" href="/theme/css/voidybootstrap.css" />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Joshua Achermann Atom Feed" />
+  </head>
+
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+              <li>
+                <a href="/pages/about.html">About</a>
+              </li>
+            <li class="divider"></li>
+            <li class="">
+              <a href="/archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+            <li><a href="/feeds/all.atom.xml" 
+                   type="application/atom+xml" rel="alternate">
+                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
+
+	<div class="jumbotron" id="overview">
+	  <div class="container">
+<pre aria-hidden="true">
+     ██╗ ██████╗ ███████╗██╗  ██╗██╗   ██╗ █████╗ 
+     ██║██╔═══██╗██╔════╝██║  ██║██║   ██║██╔══██╗
+     ██║██║   ██║███████╗███████║██║   ██║███████║
+██   ██║██║   ██║╚════██║██╔══██║██║   ██║██╔══██║
+╚█████╔╝╚██████╔╝███████║██║  ██║╚██████╔╝██║  ██║
+ ╚════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+                                                  
+ █████╗  ██████╗██╗  ██╗███████╗██████╗ ███╗   ███╗ █████╗ ███╗   ██╗███╗   ██╗
+██╔══██╗██╔════╝██║  ██║██╔════╝██╔══██╗████╗ ████║██╔══██╗████╗  ██║████╗  ██║
+███████║██║     ███████║█████╗  ██████╔╝██╔████╔██║███████║██╔██╗ ██║██╔██╗ ██║
+██╔══██║██║     ██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══██║██║╚██╗██║██║╚██╗██║
+██║  ██║╚██████╗██║  ██║███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║██║ ╚████║
+╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝
+                                                                               
+
+</pre>
+		<p class="lead">A personal blog</p>
+	  </div>
+	</div>
+
+    <div class="container" id="main-container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
+<abbr class="article-header-date">
+  Thu 11 January 2024
+</abbr> <h1>
+  <a href="/static-blog-pelican.html" rel="bookmark"
+     title="Permalink to How to make a static blog with Pelican">
+    How to make a static blog with Pelican
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="/author/joshua-achermann.html">Joshua Achermann</a>
+    in 
+    <a href="/category/python.html">
+      python</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<div class="section" id="setup">
+<h2>Setup</h2>
+<p>Following the <a class="reference external" href="https://docs.getpelican.com/en/latest/install.html">document</a> to install pelican was straightforward.</p>
+<p>In order to install pelican without disturbing the python installation provided by the system packages I made use of virtualenv. Once I have my virtualenv set up I am free to install any packages that I need through pip inside that virtual environment without disrupting my system. The essentials of virtualenvs are explained well here <a class="reference external" href="https://pycon.switowski.com/02-packages/virtualenv/">https://pycon.switowski.com/02-packages/virtualenv/</a>.</p>
+<p>Installing pelican did not pose any problems nor did initialising the project for my blog.</p>
+</div>
+<div class="section" id="theming">
+<h2>Theming</h2>
+<p>Pelican supports theming from a community managed selection of themes, there is a live preview available at <a class="reference external" href="https://pelicanthemes.com/">https://pelicanthemes.com/</a>. The docs describe the tool used to install themes for pelican was installed with the pip package and it is called pelican-themes. I cloned the <a class="reference external" href="https://github.com/getpelican/pelican-themes">repository</a> of the community managed themes and browsed the preview website for a theme that I wanted to use on my blog. I
+first settled on 'water-iris', what won me over was the ascii art for the title and the icons for the social links.</p>
+</div>
+<div class="section" id="troubleshooting-theming">
+<h2>Troubleshooting Theming</h2>
+<p>After I had installed the 'water-iris' theme, I wanted to run the . There is a settings file in the project root called 'pelicanconf.py' which includes a setting of which theme to apply to the published blog. One of the options during the project initialisation was to include a Makefile and there is a 'make devserver' target provided that enables autoreload on file changes within the blog project. Once the site had started serving, I opened my browser to see this:</p>
+<img alt="Aimage of blog clearly not themed correctly" src="images/blog_theme_fail.png" style="width: 400px;" />
+<p>Clearly, there was something wrong with the theme. I got a bit stuck at this point and thought maybe I had done something wrong in the configuration of the pelican settings or project directory structure. While I was exploring possibilities and troubleshooting the issue, I eventually examined the pelican-themes repo I had cloned and found out that the folder was empty. That would definitely explain this strange behaviour, but why was there nothing in this directory? When I looked again at the
+GitHub repo for the pelican-themes repo I realized that the water-iris theme was included as a git submodule. When I had cloned the repository, I had forgotten to add the flags that would recursively clone all the submodules contained within. Running <code class="bash">git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive</code> in the pelican-themes working directory and then reinstalling the theme resolved this issue.</p>
+<img alt="image of blog themed as expected" src="images/blog_theme_success.png" style="width: 400px;" />
+</div>
+<div class="section" id="troubleshooting-theming-again">
+<h2>Troubleshooting Theming Again!</h2>
+<p>Now that I had theming working on my blog, I wanted to change the theme especially the title ascii art as I wanted it to say my name. pelican-themes supports installing the theme folder as a symbolic link instead of a copy which faciliates theme development. I used the command <code class="bash">pelican-themes<span class="w"> </span>-s<span class="w"> </span>../pelican-themes/water-iris/<span class="w"> </span>--verbose</code> to install the theme as a symbolic link so I could make changes to the theme. The command completed successfully so I reran the devserver
+make target. I got this perplexing error <code>Exception: Could not find the theme water-iris</code> and indeed if I listed the installed themes with <code class="bash">pelican-themes<span class="w"> </span>-l</code> the 'water-iris' theme was absent as well.</p>
+<p>So I started troubleshooting again, I was suspicious that the theme was not listed at all despite the others being listed so I examined the symlink created by the tool (the --verbose flag came in handy). I ran <code class="bash">file</code> on the symlink and got this output in response.</p>
+<p><cite>/home/jachermann/.pyenv/versions/pelican/lib/python3.11/site-packages/pelican/themes/water-iris: broken symbolic link to ../pelican-themes/water-iris/</cite></p>
+<p>The issue was caused by the relative path I passed into the tool and it is resolved from the location of the created symlink rather than from my working directory, this is a <a class="reference external" href="https://github.com/getpelican/pelican/pull/1384">known issue</a> with pelican-themes but the pull request to fix this issue was closed without being merged. Either this pull request should be reopened or the argument documentation should be updated to highlight that the path passed in must the absolute path,
+additionally it would be great to update the list option to display broken symbolic links rather than leaving them absent.
+Passing in the absolute path of the 'water-iris' theme folder when using the -s option with the pelican-themes tool resolved this issue.</p>
+</div>
+<div class="section" id="awesome-ascii-art">
+<h2>Awesome ASCII art</h2>
+<p>I was inspired to investigate generating an ascii art title for my blog and found <a class="reference external" href="https://github.com/pwaller/pyfiglet">pyfiglet</a> which is a python port of the figlet terminal program which can generate ascii art. I installed pyfiglet into the virtualenv I am using to install all dependencies required for my blog. I wanted to get a sample of every type of font that is provided by the package by default, fortunately as Python as a very dynamic programming language, it is simple to
+investigate the imported module and find the list of fonts.</p>
+<div class="highlight"><pre><span></span><span class="n">jachermann</span><span class="nd">@localhost</span><span class="p">[</span><span class="n">my_blog_source</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">python</span>
+<span class="n">Python</span> <span class="mf">3.11.7</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span>  <span class="mi">8</span> <span class="mi">2024</span><span class="p">,</span> <span class="mi">18</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">53</span><span class="p">)</span> <span class="p">[</span><span class="n">GCC</span> <span class="mf">13.2.1</span> <span class="mi">20231130</span> <span class="p">[</span><span class="n">revision</span> <span class="mi">741743</span><span class="n">c028dc00f27b9c8b1d5211c1f602f2fddd</span><span class="p">]]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pyfiglet</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">pyfiglet</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;COLOR_CODES&#39;</span><span class="p">,</span> <span class="s1">&#39;CharNotPrinted&#39;</span><span class="p">,</span> <span class="s1">&#39;DEFAULT_FONT&#39;</span><span class="p">,</span> <span class="s1">&#39;Figlet&#39;</span><span class="p">,</span> <span class="s1">&#39;FigletBuilder&#39;</span><span class="p">,</span> <span class="s1">&#39;FigletError&#39;</span><span class="p">,</span> <span class="s1">&#39;FigletFont&#39;</span><span class="p">,</span> <span class="s1">&#39;FigletProduct&#39;</span><span class="p">,</span> <span class="s1">&#39;FigletRenderingEngine&#39;</span><span class="p">,</span> <span class="s1">&#39;FigletStr</span>
+<span class="n">ing</span><span class="s1">&#39;, &#39;</span><span class="n">FontError</span><span class="s1">&#39;, &#39;</span><span class="n">FontNotFound</span><span class="s1">&#39;, &#39;</span><span class="n">InvalidColor</span><span class="s1">&#39;, &#39;</span><span class="n">OptionParser</span><span class="s1">&#39;, &#39;</span><span class="n">RESET_COLORS</span><span class="s1">&#39;, &#39;</span><span class="n">SHARED_DIRECTORY</span><span class="s1">&#39;, &#39;</span><span class="n">__author__</span><span class="s1">&#39;, &#39;</span><span class="n">__builtins__</span><span class="s1">&#39;, &#39;</span><span class="n">__cached__</span><span class="s1">&#39;, &#39;</span><span class="n">__copyrigh</span>
+<span class="n">t__</span><span class="s1">&#39;, &#39;</span><span class="vm">__doc__</span><span class="s1">&#39;, &#39;</span><span class="vm">__file__</span><span class="s1">&#39;, &#39;</span><span class="n">__loader__</span><span class="s1">&#39;, &#39;</span><span class="vm">__name__</span><span class="s1">&#39;, &#39;</span><span class="n">__package__</span><span class="s1">&#39;, &#39;</span><span class="n">__path__</span><span class="s1">&#39;, &#39;</span><span class="n">__spec__</span><span class="s1">&#39;, &#39;</span><span class="n">__version__</span><span class="s1">&#39;, &#39;</span><span class="n">color_to_ansi</span><span class="s1">&#39;, &#39;</span><span class="n">figlet_format</span><span class="s1">&#39;, &#39;</span><span class="n">importlib</span><span class="s1">&#39;, &#39;</span><span class="n">i</span>
+<span class="n">tertools</span><span class="s1">&#39;, &#39;</span><span class="n">main</span><span class="s1">&#39;, &#39;</span><span class="n">os</span><span class="s1">&#39;, &#39;</span><span class="n">parse_color</span><span class="s1">&#39;, &#39;</span><span class="n">pathlib</span><span class="s1">&#39;, &#39;</span><span class="n">print_figlet</span><span class="s1">&#39;, &#39;</span><span class="n">print_function</span><span class="s1">&#39;, &#39;</span><span class="n">re</span><span class="s1">&#39;, &#39;</span><span class="n">shutil</span><span class="s1">&#39;, &#39;</span><span class="n">sys</span><span class="s1">&#39;, &#39;</span><span class="n">unicode_literals</span><span class="s1">&#39;, &#39;</span><span class="n">unicode_string</span><span class="s1">&#39;, &#39;</span><span class="n">version</span><span class="s1">&#39;, &#39;</span>
+<span class="n">zipfile</span><span class="s1">&#39;]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">pyfiglet</span><span class="o">.</span><span class="n">Figlet</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;Font&#39;</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getstate__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash</span>
+<span class="n">__</span><span class="s1">&#39;, &#39;</span><span class="fm">__init__</span><span class="s1">&#39;, &#39;</span><span class="n">__init_subclass__</span><span class="s1">&#39;, &#39;</span><span class="fm">__le__</span><span class="s1">&#39;, &#39;</span><span class="fm">__lt__</span><span class="s1">&#39;, &#39;</span><span class="vm">__module__</span><span class="s1">&#39;, &#39;</span><span class="fm">__ne__</span><span class="s1">&#39;, &#39;</span><span class="fm">__new__</span><span class="s1">&#39;, &#39;</span><span class="n">__reduce__</span><span class="s1">&#39;, &#39;</span><span class="n">__reduce_ex__</span><span class="s1">&#39;, &#39;</span><span class="fm">__repr__</span><span class="s1">&#39;, &#39;</span><span class="fm">__setattr__</span><span class="s1">&#39;, &#39;</span><span class="n">__size</span>
+<span class="n">of__</span><span class="s1">&#39;, &#39;</span><span class="fm">__str__</span><span class="s1">&#39;, &#39;</span><span class="n">__subclasshook__</span><span class="s1">&#39;, &#39;</span><span class="vm">__weakref__</span><span class="s1">&#39;, &#39;</span><span class="n">_direction</span><span class="s1">&#39;, &#39;</span><span class="n">_justify</span><span class="s1">&#39;, &#39;</span><span class="n">direction</span><span class="s1">&#39;, &#39;</span><span class="n">engine</span><span class="s1">&#39;, &#39;</span><span class="n">font</span><span class="s1">&#39;, &#39;</span><span class="n">getDirection</span><span class="s1">&#39;, &#39;</span><span class="n">getFonts</span><span class="s1">&#39;, &#39;</span><span class="n">getJustify</span><span class="s1">&#39;, &#39;</span><span class="n">justi</span>
+<span class="n">fy</span><span class="s1">&#39;, &#39;</span><span class="n">renderText</span><span class="s1">&#39;, &#39;</span><span class="n">setFont</span><span class="s1">&#39;, &#39;</span><span class="n">width</span><span class="s1">&#39;]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fonts</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">getFonts</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fonts</span><span class="p">)</span>
+<span class="mi">549</span>
+</pre></div>
+<p>Once we have the list of fonts, it is trivial to generate a text file listing each font and sample text in that font.</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;figlets.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">figlets</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">fonts</span><span class="p">:</span>
+    <span class="n">figlets</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+    <span class="n">figlets</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">tmpf</span> <span class="o">=</span> <span class="n">pyfiglet</span><span class="o">.</span><span class="n">Figlet</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+    <span class="n">figlets</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tmpf</span><span class="o">.</span><span class="n">renderText</span><span class="p">(</span><span class="s1">&#39;Joshua&#39;</span><span class="p">))</span>
+    <span class="n">figlets</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Here is a sample from the file 'figlets.txt'.</p>
+<pre class="literal-block">
+arrows
+     &gt;=&gt;
+     &gt;=&gt;                    &gt;=&gt;
+     &gt;=&gt;    &gt;=&gt;      &gt;===&gt;  &gt;=&gt;      &gt;=&gt;  &gt;=&gt;    &gt;=&gt; &gt;=&gt;
+     &gt;=&gt;  &gt;=&gt;  &gt;=&gt;  &gt;=&gt;     &gt;=&gt;&gt;=&gt;   &gt;=&gt;  &gt;=&gt;  &gt;=&gt;   &gt;=&gt;
+     &gt;=&gt; &gt;=&gt;    &gt;=&gt;   &gt;==&gt;  &gt;=&gt;  &gt;=&gt; &gt;=&gt;  &gt;=&gt; &gt;=&gt;    &gt;=&gt;
+&gt;&gt;   &gt;=&gt;  &gt;=&gt;  &gt;=&gt;      &gt;=&gt; &gt;&gt;   &gt;=&gt; &gt;=&gt;  &gt;=&gt;  &gt;=&gt;   &gt;=&gt;
+ &gt;===&gt;      &gt;=&gt;     &gt;=&gt; &gt;=&gt; &gt;=&gt;  &gt;=&gt;   &gt;==&gt;=&gt;   &gt;==&gt;&gt;&gt;==&gt;
+
+
+asc_____
+       #
+       #
+       #  ####### ####### #     # #     # #######
+      ##  #     # #       #     # #     # #     #
+ #    ##  #     # ####### ####### #     # #######
+ #    ##  #     #       # #     # #     # #     #
+ #######  ####### ####### #     # ####### #     #
+
+
+ascii___
+     ##  #####   #####  ##   ## ##   ##   ##
+        ##   ## ##   ## ##   ## ##   ##  ####
+    ### ##   ## #       ##   ## ##   ## ##  ##
+     ## ##   ##  #####  ####### ##   ## ##  ##
+     ## ##   ##      ## ##   ## ##   ## ######
+ ##  ## ##   ## ##   ## ##   ## ##   ## ##  ##
+ ##  ##  #####   #####  ##   ##  #####  ##  ##
+  ####
+</pre>
+</div>
+<div class="section" id="my-first-post">
+<h2>My First Post</h2>
+<p>I have been composing this first post as I have established this blog, in the end, I decided to opt for a different theme then the one I spent so long diagnosing.</p>
+</div>
+<div class="section" id="publishing-to-github-pages">
+<h2>Publishing to GitHub Pages</h2>
+<p>I followed the instructions on this page <a class="reference external" href="https://pages.github.com/">https://pages.github.com/</a> to create a repo for my GitHub Page and then followed the instructions in the <a class="reference external" href="https://docs.getpelican.com/en/latest/tips.html#publishing-a-project-site-to-github-pages-from-a-branch">publishing a project site to GitHub Pages from a Branch</a> to publish to it.</p>
+</div>
+
+  </div>
+  
+
+</article>
+        </div><!-- /content -->
+
+        <div class="col-md-3 sidebar-nav" id="sidebar">
+
+<div class="row">
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
+<ul class="list-unstyled social-links">
+    <li><a href="https://www.linkedin.com/in/joshua-achermann-13609b15b/" target="_blank">
+	  <i class="fa fa-linkedin-square fa-fw fa-lg" title="LinkedIn"></i>
+		LinkedIn
+	</a></li>
+    <li><a href="http://github.com/achermannagement" target="_blank">
+	  <i class="fa fa-github-square fa-fw fa-lg" title="GitHub"></i>
+		GitHub
+	</a></li>
+</ul>
+</div>
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-folder fa-fw fa-lg"></i> Categories</h4>
+<ul class="list-unstyled category-links">
+  <li><a href="/category/python.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> python</a></li>
+</ul>
+</div>
+
+</div> <!-- /row -->
+
+
+<h4><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</h4>
+<ul class="list-unstyled">
+    <li><a href="/feeds/all.atom.xml" 
+		   type="application/atom+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> Atom Feed</a></li>
+</ul>
+
+<hr />
+
+        </div><!--/sidebar -->
+      </div><!--/row-->
+    </div><!--/.container /#main-container -->
+
+    <footer id="site-footer">
+ 
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
+
+
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+  </body>
+</html>

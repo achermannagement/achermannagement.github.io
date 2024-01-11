@@ -4,6 +4,8 @@
 
 @media screen and (min-width: 768px) {
   .jumbotron {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -13,6 +15,7 @@ img {
 
 #content {
     padding-right: 50px; 
+    line-height: 26px;
 }
 
 #content p {
@@ -83,14 +86,14 @@ p.standfirst {
 /*
  * My preference for code blocks is no line wraps and horizontal scrolling.
  */
-/*#content pre {
+#content pre {
     border-left: 5px solid #999;
     overflow-x: auto;
     padding-left: 20px;
     word-break: normal;
     word-wrap: normal;
     white-space: pre;
-}*/
+}
 
 dt {
   margin-top: 10px;

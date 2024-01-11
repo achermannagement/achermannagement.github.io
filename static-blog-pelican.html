@@ -8,7 +8,7 @@
     <meta name="author" content="Joshua Achermann" />
     <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
 
-    <title>How to make a static blog with Pelican - Joshua Achermann</title>
+    <title>How to make a static site with Pelican - Joshua Achermann</title>
 
    
         <link rel="stylesheet"
@@ -30,7 +30,6 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico" />
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Joshua Achermann Atom Feed" />
   </head>
 
   <body>
@@ -54,23 +53,22 @@
               <li>
                 <a href="/pages/about.html">About</a>
               </li>
+              <li>
+                <a href="/pages/portfolio.html">Portfolio</a>
+              </li>
             <li class="divider"></li>
             <li class="">
               <a href="/archives.html">Archives</a>
             </li>
           <li class="divider"></li>
-            <li><a href="/feeds/all.atom.xml" 
-                   type="application/atom+xml" rel="alternate">
-                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
         </ul> <!-- /nav -->
       </div> <!-- /navbar-collapse -->
 	  </div> <!-- /container -->
     </nav> <!-- /navbar -->
 
-	<div class="jumbotron" id="overview">
-	  <div class="container">
-<pre aria-hidden="true">
-     ██╗ ██████╗ ███████╗██╗  ██╗██╗   ██╗ █████╗ 
+  <div class="jumbotron" id="overview">
+    <div class="container">
+        <pre aria-hidden="true">     ██╗ ██████╗ ███████╗██╗  ██╗██╗   ██╗ █████╗ 
      ██║██╔═══██╗██╔════╝██║  ██║██║   ██║██╔══██╗
      ██║██║   ██║███████╗███████║██║   ██║███████║
 ██   ██║██║   ██║╚════██║██╔══██║██║   ██║██╔══██║
@@ -84,11 +82,10 @@
 ██║  ██║╚██████╗██║  ██║███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║██║ ╚████║
 ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝
                                                                                
-
 </pre>
-		<p class="lead">A personal blog</p>
-	  </div>
-	</div>
+    <p class="lead">A personal blog</p>
+    </div>
+  </div>
 
     <div class="container" id="main-container">
       <div class="row">
@@ -96,11 +93,11 @@
 <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
   <header class="article-header">
 <abbr class="article-header-date">
-  Thu 11 January 2024
+  Fri 12 January 2024
 </abbr> <h1>
   <a href="/static-blog-pelican.html" rel="bookmark"
-     title="Permalink to How to make a static blog with Pelican">
-    How to make a static blog with Pelican
+     title="Permalink to How to make a static site with Pelican">
+    How to make a static site with Pelican
   </a>
 </h1><div class="article-header-info">
   <p>
@@ -121,19 +118,19 @@
 <div class="section" id="theming">
 <h2>Theming</h2>
 <p>Pelican supports theming from a community managed selection of themes, there is a live preview available at <a class="reference external" href="https://pelicanthemes.com/">https://pelicanthemes.com/</a>. The docs describe the tool used to install themes for pelican was installed with the pip package and it is called pelican-themes. I cloned the <a class="reference external" href="https://github.com/getpelican/pelican-themes">repository</a> of the community managed themes and browsed the preview website for a theme that I wanted to use on my blog. I
-first settled on 'water-iris', what won me over was the ascii art for the title and the icons for the social links.</p>
+first settled on 'water-iris', what won me over was the ASCII art for the title and the icons for the social links.</p>
 </div>
 <div class="section" id="troubleshooting-theming">
 <h2>Troubleshooting Theming</h2>
-<p>After I had installed the 'water-iris' theme, I wanted to run the . There is a settings file in the project root called 'pelicanconf.py' which includes a setting of which theme to apply to the published blog. One of the options during the project initialisation was to include a Makefile and there is a 'make devserver' target provided that enables autoreload on file changes within the blog project. Once the site had started serving, I opened my browser to see this:</p>
+<p>After I had installed the 'water-iris' theme, I wanted to run the live preview with this theme to test it out. There is a settings file in the project root called 'pelicanconf.py' which includes a setting of which theme to apply to the published blog. One of the options during the project initialisation was to include a Makefile and there is a 'make devserver' target provided that enables auto reload on file changes within the blog project. Once the site had started serving, I opened my browser to see this:</p>
 <img alt="Aimage of blog clearly not themed correctly" src="images/blog_theme_fail.png" style="width: 400px;" />
-<p>Clearly, there was something wrong with the theme. I got a bit stuck at this point and thought maybe I had done something wrong in the configuration of the pelican settings or project directory structure. While I was exploring possibilities and troubleshooting the issue, I eventually examined the pelican-themes repo I had cloned and found out that the folder was empty. That would definitely explain this strange behaviour, but why was there nothing in this directory? When I looked again at the
+<p>Clearly, there was something wrong with the application of the theme to my blog. I got a bit stuck at this point and thought maybe I had done something wrong in the configuration of the pelican settings or project directory structure. While I was exploring possibilities and troubleshooting the issue, I eventually examined the pelican-themes repo I had cloned and found out that the folder was empty. That would definitely explain this strange behaviour, but why was there nothing in this directory? When I looked again at the
 GitHub repo for the pelican-themes repo I realized that the water-iris theme was included as a git submodule. When I had cloned the repository, I had forgotten to add the flags that would recursively clone all the submodules contained within. Running <code class="bash">git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive</code> in the pelican-themes working directory and then reinstalling the theme resolved this issue.</p>
 <img alt="image of blog themed as expected" src="images/blog_theme_success.png" style="width: 400px;" />
 </div>
 <div class="section" id="troubleshooting-theming-again">
 <h2>Troubleshooting Theming Again!</h2>
-<p>Now that I had theming working on my blog, I wanted to change the theme especially the title ascii art as I wanted it to say my name. pelican-themes supports installing the theme folder as a symbolic link instead of a copy which faciliates theme development. I used the command <code class="bash">pelican-themes<span class="w"> </span>-s<span class="w"> </span>../pelican-themes/water-iris/<span class="w"> </span>--verbose</code> to install the theme as a symbolic link so I could make changes to the theme. The command completed successfully so I reran the devserver
+<p>Now that I had theming working on my blog, I wanted to change the theme especially the title ASCII art as I wanted it to say my name. pelican-themes supports installing the theme folder as a symbolic link instead of a copy which facilitates theme development. I used the command <code class="bash">pelican-themes<span class="w"> </span>-s<span class="w"> </span>../pelican-themes/water-iris/<span class="w"> </span>--verbose</code> to install the theme as a symbolic link so I could make changes to the theme. The command completed successfully so I reran the devserver
 make target. I got this perplexing error <code>Exception: Could not find the theme water-iris</code> and indeed if I listed the installed themes with <code class="bash">pelican-themes<span class="w"> </span>-l</code> the 'water-iris' theme was absent as well.</p>
 <p>So I started troubleshooting again, I was suspicious that the theme was not listed at all despite the others being listed so I examined the symlink created by the tool (the --verbose flag came in handy). I ran <code class="bash">file</code> on the symlink and got this output in response.</p>
 <p><cite>/home/jachermann/.pyenv/versions/pelican/lib/python3.11/site-packages/pelican/themes/water-iris: broken symbolic link to ../pelican-themes/water-iris/</cite></p>
@@ -143,7 +140,7 @@ Passing in the absolute path of the 'water-iris' theme folder when using the -s 
 </div>
 <div class="section" id="awesome-ascii-art">
 <h2>Awesome ASCII art</h2>
-<p>I was inspired to investigate generating an ascii art title for my blog and found <a class="reference external" href="https://github.com/pwaller/pyfiglet">pyfiglet</a> which is a python port of the figlet terminal program which can generate ascii art. I installed pyfiglet into the virtualenv I am using to install all dependencies required for my blog. I wanted to get a sample of every type of font that is provided by the package by default, fortunately as Python as a very dynamic programming language, it is simple to
+<p>I was inspired to investigate generating an ASCII art title for my blog and found <a class="reference external" href="https://github.com/pwaller/pyfiglet">pyfiglet</a> which is a python port of the figlet terminal program which can generate ASCII art. I installed pyfiglet into the virtualenv I am using to install all dependencies required for my blog. I wanted to get a sample of every type of font that is provided by the package by default, fortunately as Python as a very dynamic programming language, it is simple to
 investigate the imported module and find the list of fonts.</p>
 <div class="highlight"><pre><span></span><span class="n">jachermann</span><span class="nd">@localhost</span><span class="p">[</span><span class="n">my_blog_source</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">python</span>
 <span class="n">Python</span> <span class="mf">3.11.7</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span>  <span class="mi">8</span> <span class="mi">2024</span><span class="p">,</span> <span class="mi">18</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">53</span><span class="p">)</span> <span class="p">[</span><span class="n">GCC</span> <span class="mf">13.2.1</span> <span class="mi">20231130</span> <span class="p">[</span><span class="n">revision</span> <span class="mi">741743</span><span class="n">c028dc00f27b9c8b1d5211c1f602f2fddd</span><span class="p">]]</span> <span class="n">on</span> <span class="n">linux</span>
@@ -206,14 +203,54 @@ ascii___
  ##  ##  #####   #####  ##   ##  #####  ##  ##
   ####
 </pre>
+<p>I went with the font <code>ansi-shadow</code>.</p>
+<pre class="literal-block">
+     ██╗ ██████╗ ███████╗██╗  ██╗██╗   ██╗ █████╗
+     ██║██╔═══██╗██╔════╝██║  ██║██║   ██║██╔══██╗
+     ██║██║   ██║███████╗███████║██║   ██║███████║
+██   ██║██║   ██║╚════██║██╔══██║██║   ██║██╔══██║
+╚█████╔╝╚██████╔╝███████║██║  ██║╚██████╔╝██║  ██║
+ ╚════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+</pre>
 </div>
-<div class="section" id="my-first-post">
-<h2>My First Post</h2>
+<div class="section" id="adding-my-custom-title">
+<h2>Adding my custom title</h2>
 <p>I have been composing this first post as I have established this blog, in the end, I decided to opt for a different theme then the one I spent so long diagnosing.</p>
+<p>Once I had selected my choice of font for the title, I had to make changes to the theme to add it to the site header. This is because the blog content is only responsible for the static content of posts and pages rather than the look of the site itself. I moved the theme folder I had chosen into my blog source repository and installed it via symbolic link with pelican-themes. Then I could edit the HTML templates provided by the theme to add my custom title and keep my changes in version control.</p>
+<p>Jinja templating is used to pass parameters from the blog content to the theme, I wanted to see if I could add my bespoke parameter for passing the title word art I had selected. Configuration used by pelican is set in 'pelicanconf.py' and that includes configuration for the theme as well. It is just a python file so I added the follow code alongside the generated configuration. Here is the relevant snippet:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyfiglet</span> <span class="kn">import</span> <span class="n">Figlet</span>
+<span class="n">figlet</span> <span class="o">=</span> <span class="n">Figlet</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s1">&#39;ansi_shadow&#39;</span><span class="p">)</span>
+
+<span class="c1"># custom settings are prefaced with CUSTOM_</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;Joshua Achermann&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s1">&#39;Joshua Achermann&#39;</span>
+<span class="n">CUSTOM_TITLE</span> <span class="o">=</span> <span class="n">figlet</span><span class="o">.</span><span class="n">renderText</span><span class="p">(</span><span class="n">SITENAME</span><span class="p">)</span>
+</pre></div>
+<p>This allows me to use the value in the template for the title , this theme has it in an include called 'jumbotron.html'. The file is small enough to include in full. I added a condition that checks for the presence of my custom parameter 'CUSTOM_TITLE' and includes a pre formatted section to display it. If the custom parameter is not present, it falls back to its original behaviour of including the site name variable directly.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;jumbotron&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;overview&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+      {% if CUSTOM_TITLE %}
+      <span class="p">&lt;</span><span class="nt">pre</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>{{ CUSTOM_TITLE }}<span class="p">&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
+      {% else %}
+      {{ SITENAME }}
+      {% endif %}
+      {% if SITESUBTITLE %}
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;lead&quot;</span><span class="p">&gt;</span>{{ SITESUBTITLE }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      {% endif %}
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="creating-posts">
+<h2>Creating posts</h2>
+<p>Pelican supports markup languages reStructedText and Markdown for writing blog articles, others may be supported through plugins but I wanted to stick to the well trodden paths so I would choose between these two. I had used Markdown before (many README files are composed in Markdown) and liked it quite a lot, but I decided to write my blog entries in reStructedText (rst) in order to learn it properly as it is used extensively in Python documentation. This very post was crafted in a rst file
+(very meta I am aware). All blog content including static resources are stored in a subfolder called 'content', itself containing other subfolders such as 'images' or 'pages'. This directory structure can be changed but 'pelicanconf.py' contains settings that need to be updated to reflect these changes. In my setup, there is a content subfolder called 'posts' which will contain all the blog article rst files.</p>
 </div>
 <div class="section" id="publishing-to-github-pages">
 <h2>Publishing to GitHub Pages</h2>
 <p>I followed the instructions on this page <a class="reference external" href="https://pages.github.com/">https://pages.github.com/</a> to create a repo for my GitHub Page and then followed the instructions in the <a class="reference external" href="https://docs.getpelican.com/en/latest/tips.html#publishing-a-project-site-to-github-pages-from-a-branch">publishing a project site to GitHub Pages from a Branch</a> to publish to it.</p>
+<p>The first time you are going to publish you need to enable the GitHub Page setting in the repository settings as described <a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-your-site">here</a>.</p>
 </div>
 
   </div>
@@ -251,12 +288,6 @@ ascii___
 </div> <!-- /row -->
 
 
-<h4><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</h4>
-<ul class="list-unstyled">
-    <li><a href="/feeds/all.atom.xml" 
-		   type="application/atom+xml" rel="alternate">
-		<i class="fa fa-rss-square fa-fw fa-lg"></i> Atom Feed</a></li>
-</ul>
 
 <hr />
 

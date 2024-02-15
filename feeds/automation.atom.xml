@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Joshua Achermann - automation</title><link href="/" rel="alternate"></link><link href="/feeds/automation.atom.xml" rel="self"></link><id>/</id><updated>2024-02-15T15:34:33+11:00</updated><subtitle>A personal blog</subtitle><entry><title>How to install all my GOG games</title><link href="/install-all-gog.html" rel="alternate"></link><published>2024-02-15T15:34:33+11:00</published><updated>2024-02-15T15:34:33+11:00</updated><author><name>Joshua Achermann</name></author><id>tag:None,2024-02-15:/install-all-gog.html</id><summary type="html">&lt;p class="first last"&gt;A journey to bulk install some games&lt;/p&gt;
+</summary><content type="html">&lt;div class="section" id="subject-matter"&gt;
+&lt;h2&gt;Subject Matter&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://store.steampowered.com/"&gt;Steam&lt;/a&gt; and &lt;a class="reference external" href="https://www.gog.com/"&gt;GOG (Good Old Games)&lt;/a&gt; are online stores for purchasing video games which can be downloaded (it all happens digitally these days).&lt;/p&gt;
+&lt;p&gt;I recently purchased an excess of storage for my main computer (four 2TB SSDs) and wanted to make use of it by installing a good chunk of the games from my Steam library. When the Library tab of the Steam client is selected, your list of games is presented by name and small icon on the left side. Selecting games in bulk is easily achieved by holding the Shift key and selecting each game on the list, then you can right click on a selected item to bring up a context menu including
+actions to perform in bulk (installation being one of them).&lt;/p&gt;
+&lt;p&gt;Furthermore, games can be easily sorted into categories. Overall, the user experience was very pleasant and I had setup the queue of games to be installed very quickly. Even with so much storage, I had to be selective about which Steam games I installed (Steam sales are my weakness). I don't need to be so cautious with my collection of GOG games as there are less of them and they don't use as much storage per game. I aimed to install all of my GOG games
+on a single 2TB drive, I felt this should be a simple task.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="problem"&gt;
+&lt;h2&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Similarly to how Steam provides a client to install and manage your game collection, GOG has provided their own client. It is called &lt;a class="reference external" href="https://www.gog.com/galaxy"&gt;GOG Galaxy&lt;/a&gt; and it looks pretty slick with a polished purple aesthetic. By default, the games are presented visually as rows of products on shelves but this can be changed to a more traditional list view which I prefer.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I discovered there is no way to select games in bulk in the GOG Galaxy client. If I wanted to install all my games, I would need to click the install button on each game entry, then click again in each dialog to confirm the installation. This would result in hundreds of mouse clicks when really I wanted a single mouse click to install ALL games, this possibility was not even present with my Steam bulk installation as I couldn't install each and every game.&lt;/p&gt;
+&lt;p&gt;After determining that this feature is not present in the GOG Galaxy client, I decided to explore other possibilities.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="direct-downloads"&gt;
+&lt;h2&gt;Direct Downloads&lt;/h2&gt;
+&lt;p&gt;Galaxy was not always provided by GOG and before it existed, the way to download and manage your games was on the &lt;a class="reference external" href="https://www.gog.com/"&gt;GOG website&lt;/a&gt;. You can download the installers from here and run them on your computer. Someone has built a &lt;a class="reference external" href="https://github.com/eddie3/gogrepo"&gt;python script&lt;/a&gt; to bulk download direct installers and additional content from the GOG website, which would probably be the best option for what I want.&lt;/p&gt;
+&lt;p&gt;The reason I didn't go with this option is because I stubbornly wanted to install the games with GOG Galaxy integration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="alternate-clients"&gt;
+&lt;h2&gt;Alternate Clients&lt;/h2&gt;
+&lt;p&gt;GOG Galaxy does not have native Linux support. If you want to manage your GOG games on a Linux system, your best bet is to use &lt;a class="reference external" href="https://lutris.net/"&gt;Lutris&lt;/a&gt;. My main computer is running Windows 10 and there are alternative game launcher clients that run on Windows: &lt;a class="reference external" href="https://heroicgameslauncher.com/"&gt;Heroic&lt;/a&gt; and &lt;a class="reference external" href="https://playnite.link/"&gt;Playnite&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I thought maybe one of these alternative clients might support bulk installation but unfortunately even though they let you select multiple games simultaneously they don't let you install them in bulk. I started to consider making changes to these launchers to add this feature as they are both open source but the thought of learning a new codebase I am unfamiliar with is daunting. There had to be an easier way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="automation-the-lazy-way"&gt;
+&lt;h2&gt;Automation the Lazy Way&lt;/h2&gt;
+&lt;p&gt;I decided to use &lt;a class="reference external" href="https://github.com/AutoHotkey/AutoHotkey"&gt;AutoHotkey&lt;/a&gt; in order to automate the process. Using Playnite, I connected it to my GOG account and it downloaded all the metadata for my games. Then it presented me the list of all my GOG games, with which I could craft a script to repeatedly press down and enter to start installing each game.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;#Persistent&lt;/span&gt;
+&lt;span class="nb"&gt;SetTimer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PressKeys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
+&lt;span class="nb"&gt;return&lt;/span&gt;
+
+&lt;span class="nl"&gt;PressKeys:&lt;/span&gt;
+&lt;span class="nb"&gt;Send&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;Sleep&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+&lt;span class="nb"&gt;Send&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Enter&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;return&lt;/span&gt;
+
+&lt;span class="nl"&gt;Esc::&lt;/span&gt;&lt;span class="n"&gt;ExitApp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That last line is very important as it allows me to cease the script once it has reached the bottom of the list by pressing the Escape key. Not quite pressing a single button, but once you set it up and run it, it will work for any number of games. At least that is what I hoped...&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="performance-issues"&gt;
+&lt;h2&gt;Performance Issues&lt;/h2&gt;
+&lt;p&gt;Once the game has been selected in Playnite, it does eventually appear in the GOG Galaxy download queue exactly as I intended. The problem is that when the download queue started to expand to a size of about 300, the client really started to struggle.&lt;/p&gt;
+&lt;p&gt;The client would take a long time to even show the Downloads entry in the menu upon starting up. It is hard to say why the program struggled so much without having access to the source code, however I rummaged around in the configuration files to see if there was some clues. I figured out that the client uses sqlite to store its job queue.  It is not encrypted and can be explored easily using a tool like &lt;a class="reference external" href="https://sqlitebrowser.org/"&gt;DB Browser&lt;/a&gt;. Sometimes the stalls could be fixed by clearing the job queue (there is a jobs table that can be cleared with a simple SQL TRUNCATE statement) or even deleting the jobs database file completely, but mostly it was a waiting
+game.&lt;/p&gt;
+&lt;p&gt;Another problem is that some installers that run through the GOG Galaxy are not fully quiet and require user interaction in order to continue so I needed to check it regularly.&lt;/p&gt;
+&lt;p&gt;After a long wait over 4 days, checking and restarting the GOG Galaxy client each time it stalled. I eventually installed every GOG game. After trimming down and removing some duplicate games I ended up with 492 installed GOG games which took up 845 GB on my drive.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Ultimately, I achieved the outcome that I wanted although it was far more time consuming than I expected it to be. I went down some rabbit holes but found a solution that is reasonably simple but flawed. As of the time of writing, Steam really is the most featureful client out of any proprietary game launcher and that is no doubt playing massively into its success. I have found that other game launchers are missing features I expect as standard because they are present in Steam,
+fortunately there are open source game launchers that the community could rally around to reach parity with Steam.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="automation"></category><category term="games"></category><category term="GOG"></category><category term="AutoHotkey"></category><category term="Playnite"></category><category term="sqlite"></category></entry></feed>

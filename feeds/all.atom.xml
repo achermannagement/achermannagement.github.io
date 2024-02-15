@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Joshua Achermann</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2024-01-11T00:45:35+11:00</updated><subtitle>A personal blog</subtitle><entry><title>How to make a static blog with Pelican</title><link href="/static-blog-pelican.html" rel="alternate"></link><published>2024-01-11T00:45:35+11:00</published><updated>2024-01-11T00:45:35+11:00</updated><author><name>Joshua Achermann</name></author><id>tag:None,2024-01-11:/static-blog-pelican.html</id><summary type="html">&lt;p class="first last"&gt;Article about publishing (&amp;amp; troubleshooting) a static blog with Pelican&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Joshua Achermann</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2024-02-15T15:34:33+11:00</updated><subtitle>A personal blog</subtitle><entry><title>How to install all my GOG games</title><link href="/install-all-gog.html" rel="alternate"></link><published>2024-02-15T15:34:33+11:00</published><updated>2024-02-15T15:34:33+11:00</updated><author><name>Joshua Achermann</name></author><id>tag:None,2024-02-15:/install-all-gog.html</id><summary type="html">&lt;p class="first last"&gt;A journey to bulk install some games&lt;/p&gt;
+</summary><content type="html">&lt;div class="section" id="subject-matter"&gt;
+&lt;h2&gt;Subject Matter&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://store.steampowered.com/"&gt;Steam&lt;/a&gt; and &lt;a class="reference external" href="https://www.gog.com/"&gt;GOG (Good Old Games)&lt;/a&gt; are online stores for purchasing video games which can be downloaded (it all happens digitally these days).&lt;/p&gt;
+&lt;p&gt;I recently purchased an excess of storage for my main computer (four 2TB SSDs) and wanted to make use of it by installing a good chunk of the games from my Steam library. When the Library tab of the Steam client is selected, your list of games is presented by name and small icon on the left side. Selecting games in bulk is easily achieved by holding the Shift key and selecting each game on the list, then you can right click on a selected item to bring up a context menu including
+actions to perform in bulk (installation being one of them).&lt;/p&gt;
+&lt;p&gt;Furthermore, games can be easily sorted into categories. Overall, the user experience was very pleasant and I had setup the queue of games to be installed very quickly. Even with so much storage, I had to be selective about which Steam games I installed (Steam sales are my weakness). I don't need to be so cautious with my collection of GOG games as there are less of them and they don't use as much storage per game. I aimed to install all of my GOG games
+on a single 2TB drive, I felt this should be a simple task.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="problem"&gt;
+&lt;h2&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Similarly to how Steam provides a client to install and manage your game collection, GOG has provided their own client. It is called &lt;a class="reference external" href="https://www.gog.com/galaxy"&gt;GOG Galaxy&lt;/a&gt; and it looks pretty slick with a polished purple aesthetic. By default, the games are presented visually as rows of products on shelves but this can be changed to a more traditional list view which I prefer.&lt;/p&gt;
+&lt;p&gt;Unfortunately, I discovered there is no way to select games in bulk in the GOG Galaxy client. If I wanted to install all my games, I would need to click the install button on each game entry, then click again in each dialog to confirm the installation. This would result in hundreds of mouse clicks when really I wanted a single mouse click to install ALL games, this possibility was not even present with my Steam bulk installation as I couldn't install each and every game.&lt;/p&gt;
+&lt;p&gt;After determining that this feature is not present in the GOG Galaxy client, I decided to explore other possibilities.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="direct-downloads"&gt;
+&lt;h2&gt;Direct Downloads&lt;/h2&gt;
+&lt;p&gt;Galaxy was not always provided by GOG and before it existed, the way to download and manage your games was on the &lt;a class="reference external" href="https://www.gog.com/"&gt;GOG website&lt;/a&gt;. You can download the installers from here and run them on your computer. Someone has built a &lt;a class="reference external" href="https://github.com/eddie3/gogrepo"&gt;python script&lt;/a&gt; to bulk download direct installers and additional content from the GOG website, which would probably be the best option for what I want.&lt;/p&gt;
+&lt;p&gt;The reason I didn't go with this option is because I stubbornly wanted to install the games with GOG Galaxy integration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="alternate-clients"&gt;
+&lt;h2&gt;Alternate Clients&lt;/h2&gt;
+&lt;p&gt;GOG Galaxy does not have native Linux support. If you want to manage your GOG games on a Linux system, your best bet is to use &lt;a class="reference external" href="https://lutris.net/"&gt;Lutris&lt;/a&gt;. My main computer is running Windows 10 and there are alternative game launcher clients that run on Windows: &lt;a class="reference external" href="https://heroicgameslauncher.com/"&gt;Heroic&lt;/a&gt; and &lt;a class="reference external" href="https://playnite.link/"&gt;Playnite&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I thought maybe one of these alternative clients might support bulk installation but unfortunately even though they let you select multiple games simultaneously they don't let you install them in bulk. I started to consider making changes to these launchers to add this feature as they are both open source but the thought of learning a new codebase I am unfamiliar with is daunting. There had to be an easier way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="automation-the-lazy-way"&gt;
+&lt;h2&gt;Automation the Lazy Way&lt;/h2&gt;
+&lt;p&gt;I decided to use &lt;a class="reference external" href="https://github.com/AutoHotkey/AutoHotkey"&gt;AutoHotkey&lt;/a&gt; in order to automate the process. Using Playnite, I connected it to my GOG account and it downloaded all the metadata for my games. Then it presented me the list of all my GOG games, with which I could craft a script to repeatedly press down and enter to start installing each game.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;#Persistent&lt;/span&gt;
+&lt;span class="nb"&gt;SetTimer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PressKeys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
+&lt;span class="nb"&gt;return&lt;/span&gt;
+
+&lt;span class="nl"&gt;PressKeys:&lt;/span&gt;
+&lt;span class="nb"&gt;Send&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;Sleep&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+&lt;span class="nb"&gt;Send&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Enter&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;return&lt;/span&gt;
+
+&lt;span class="nl"&gt;Esc::&lt;/span&gt;&lt;span class="n"&gt;ExitApp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That last line is very important as it allows me to cease the script once it has reached the bottom of the list by pressing the Escape key. Not quite pressing a single button, but once you set it up and run it, it will work for any number of games. At least that is what I hoped...&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="performance-issues"&gt;
+&lt;h2&gt;Performance Issues&lt;/h2&gt;
+&lt;p&gt;Once the game has been selected in Playnite, it does eventually appear in the GOG Galaxy download queue exactly as I intended. The problem is that when the download queue started to expand to a size of about 300, the client really started to struggle.&lt;/p&gt;
+&lt;p&gt;The client would take a long time to even show the Downloads entry in the menu upon starting up. It is hard to say why the program struggled so much without having access to the source code, however I rummaged around in the configuration files to see if there was some clues. I figured out that the client uses sqlite to store its job queue.  It is not encrypted and can be explored easily using a tool like &lt;a class="reference external" href="https://sqlitebrowser.org/"&gt;DB Browser&lt;/a&gt;. Sometimes the stalls could be fixed by clearing the job queue (there is a jobs table that can be cleared with a simple SQL TRUNCATE statement) or even deleting the jobs database file completely, but mostly it was a waiting
+game.&lt;/p&gt;
+&lt;p&gt;Another problem is that some installers that run through the GOG Galaxy are not fully quiet and require user interaction in order to continue so I needed to check it regularly.&lt;/p&gt;
+&lt;p&gt;After a long wait over 4 days, checking and restarting the GOG Galaxy client each time it stalled. I eventually installed every GOG game. After trimming down and removing some duplicate games I ended up with 492 installed GOG games which took up 845 GB on my drive.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Ultimately, I achieved the outcome that I wanted although it was far more time consuming than I expected it to be. I went down some rabbit holes but found a solution that is reasonably simple but flawed. As of the time of writing, Steam really is the most featureful client out of any proprietary game launcher and that is no doubt playing massively into its success. I have found that other game launchers are missing features I expect as standard because they are present in Steam,
+fortunately there are open source game launchers that the community could rally around to reach parity with Steam.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="automation"></category><category term="games"></category><category term="GOG"></category><category term="AutoHotkey"></category><category term="Playnite"></category><category term="sqlite"></category></entry><entry><title>How to make a static site with Pelican</title><link href="/static-blog-pelican.html" rel="alternate"></link><published>2024-01-12T10:44:58+11:00</published><updated>2024-01-12T10:44:58+11:00</updated><author><name>Joshua Achermann</name></author><id>tag:None,2024-01-12:/static-blog-pelican.html</id><summary type="html">&lt;p class="first last"&gt;Article about publishing (&amp;amp; troubleshooting) a static blog with Pelican&lt;/p&gt;
 </summary><content type="html">&lt;div class="section" id="setup"&gt;
 &lt;h2&gt;Setup&lt;/h2&gt;
 &lt;p&gt;Following the &lt;a class="reference external" href="https://docs.getpelican.com/en/latest/install.html"&gt;document&lt;/a&gt; to install pelican was straightforward.&lt;/p&gt;
@@ -9,19 +64,19 @@
 &lt;div class="section" id="theming"&gt;
 &lt;h2&gt;Theming&lt;/h2&gt;
 &lt;p&gt;Pelican supports theming from a community managed selection of themes, there is a live preview available at &lt;a class="reference external" href="https://pelicanthemes.com/"&gt;https://pelicanthemes.com/&lt;/a&gt;. The docs describe the tool used to install themes for pelican was installed with the pip package and it is called pelican-themes. I cloned the &lt;a class="reference external" href="https://github.com/getpelican/pelican-themes"&gt;repository&lt;/a&gt; of the community managed themes and browsed the preview website for a theme that I wanted to use on my blog. I
-first settled on 'water-iris', what won me over was the ascii art for the title and the icons for the social links.&lt;/p&gt;
+first settled on 'water-iris', what won me over was the ASCII art for the title and the icons for the social links.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="troubleshooting-theming"&gt;
 &lt;h2&gt;Troubleshooting Theming&lt;/h2&gt;
-&lt;p&gt;After I had installed the 'water-iris' theme, I wanted to run the . There is a settings file in the project root called 'pelicanconf.py' which includes a setting of which theme to apply to the published blog. One of the options during the project initialisation was to include a Makefile and there is a 'make devserver' target provided that enables autoreload on file changes within the blog project. Once the site had started serving, I opened my browser to see this:&lt;/p&gt;
+&lt;p&gt;After I had installed the 'water-iris' theme, I wanted to run the live preview with this theme to test it out. There is a settings file in the project root called 'pelicanconf.py' which includes a setting of which theme to apply to the published blog. One of the options during the project initialisation was to include a Makefile and there is a 'make devserver' target provided that enables auto reload on file changes within the blog project. Once the site had started serving, I opened my browser to see this:&lt;/p&gt;
 &lt;img alt="Aimage of blog clearly not themed correctly" src="images/blog_theme_fail.png" style="width: 400px;" /&gt;
-&lt;p&gt;Clearly, there was something wrong with the theme. I got a bit stuck at this point and thought maybe I had done something wrong in the configuration of the pelican settings or project directory structure. While I was exploring possibilities and troubleshooting the issue, I eventually examined the pelican-themes repo I had cloned and found out that the folder was empty. That would definitely explain this strange behaviour, but why was there nothing in this directory? When I looked again at the
+&lt;p&gt;Clearly, there was something wrong with the application of the theme to my blog. I got a bit stuck at this point and thought maybe I had done something wrong in the configuration of the pelican settings or project directory structure. While I was exploring possibilities and troubleshooting the issue, I eventually examined the pelican-themes repo I had cloned and found out that the folder was empty. That would definitely explain this strange behaviour, but why was there nothing in this directory? When I looked again at the
 GitHub repo for the pelican-themes repo I realized that the water-iris theme was included as a git submodule. When I had cloned the repository, I had forgotten to add the flags that would recursively clone all the submodules contained within. Running &lt;code class="bash"&gt;git&lt;span class="w"&gt; &lt;/span&gt;submodule&lt;span class="w"&gt; &lt;/span&gt;update&lt;span class="w"&gt; &lt;/span&gt;--init&lt;span class="w"&gt; &lt;/span&gt;--recursive&lt;/code&gt; in the pelican-themes working directory and then reinstalling the theme resolved this issue.&lt;/p&gt;
 &lt;img alt="image of blog themed as expected" src="images/blog_theme_success.png" style="width: 400px;" /&gt;
 &lt;/div&gt;
 &lt;div class="section" id="troubleshooting-theming-again"&gt;
 &lt;h2&gt;Troubleshooting Theming Again!&lt;/h2&gt;
-&lt;p&gt;Now that I had theming working on my blog, I wanted to change the theme especially the title ascii art as I wanted it to say my name. pelican-themes supports installing the theme folder as a symbolic link instead of a copy which faciliates theme development. I used the command &lt;code class="bash"&gt;pelican-themes&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;../pelican-themes/water-iris/&lt;span class="w"&gt; &lt;/span&gt;--verbose&lt;/code&gt; to install the theme as a symbolic link so I could make changes to the theme. The command completed successfully so I reran the devserver
+&lt;p&gt;Now that I had theming working on my blog, I wanted to change the theme especially the title ASCII art as I wanted it to say my name. pelican-themes supports installing the theme folder as a symbolic link instead of a copy which facilitates theme development. I used the command &lt;code class="bash"&gt;pelican-themes&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;../pelican-themes/water-iris/&lt;span class="w"&gt; &lt;/span&gt;--verbose&lt;/code&gt; to install the theme as a symbolic link so I could make changes to the theme. The command completed successfully so I reran the devserver
 make target. I got this perplexing error &lt;code&gt;Exception: Could not find the theme water-iris&lt;/code&gt; and indeed if I listed the installed themes with &lt;code class="bash"&gt;pelican-themes&lt;span class="w"&gt; &lt;/span&gt;-l&lt;/code&gt; the 'water-iris' theme was absent as well.&lt;/p&gt;
 &lt;p&gt;So I started troubleshooting again, I was suspicious that the theme was not listed at all despite the others being listed so I examined the symlink created by the tool (the --verbose flag came in handy). I ran &lt;code class="bash"&gt;file&lt;/code&gt; on the symlink and got this output in response.&lt;/p&gt;
 &lt;p&gt;&lt;cite&gt;/home/jachermann/.pyenv/versions/pelican/lib/python3.11/site-packages/pelican/themes/water-iris: broken symbolic link to ../pelican-themes/water-iris/&lt;/cite&gt;&lt;/p&gt;
@@ -31,7 +86,7 @@ Passing in the absolute path of the 'water-iris' theme folder when using the -s 
 &lt;/div&gt;
 &lt;div class="section" id="awesome-ascii-art"&gt;
 &lt;h2&gt;Awesome ASCII art&lt;/h2&gt;
-&lt;p&gt;I was inspired to investigate generating an ascii art title for my blog and found &lt;a class="reference external" href="https://github.com/pwaller/pyfiglet"&gt;pyfiglet&lt;/a&gt; which is a python port of the figlet terminal program which can generate ascii art. I installed pyfiglet into the virtualenv I am using to install all dependencies required for my blog. I wanted to get a sample of every type of font that is provided by the package by default, fortunately as Python as a very dynamic programming language, it is simple to
+&lt;p&gt;I was inspired to investigate generating an ASCII art title for my blog and found &lt;a class="reference external" href="https://github.com/pwaller/pyfiglet"&gt;pyfiglet&lt;/a&gt; which is a python port of the figlet terminal program which can generate ASCII art. I installed pyfiglet into the virtualenv I am using to install all dependencies required for my blog. I wanted to get a sample of every type of font that is provided by the package by default, fortunately as Python as a very dynamic programming language, it is simple to
 investigate the imported module and find the list of fonts.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;jachermann&lt;/span&gt;&lt;span class="nd"&gt;@localhost&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;my_blog_source&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
 &lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;3.11.7&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt;  &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="mi"&gt;2024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GCC&lt;/span&gt; &lt;span class="mf"&gt;13.2.1&lt;/span&gt; &lt;span class="mi"&gt;20231130&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;revision&lt;/span&gt; &lt;span class="mi"&gt;741743&lt;/span&gt;&lt;span class="n"&gt;c028dc00f27b9c8b1d5211c1f602f2fddd&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;linux&lt;/span&gt;
@@ -94,13 +149,53 @@ ascii___
  ##  ##  #####   #####  ##   ##  #####  ##  ##
   ####
 &lt;/pre&gt;
+&lt;p&gt;I went with the font &lt;code&gt;ansi-shadow&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+     ██╗ ██████╗ ███████╗██╗  ██╗██╗   ██╗ █████╗
+     ██║██╔═══██╗██╔════╝██║  ██║██║   ██║██╔══██╗
+     ██║██║   ██║███████╗███████║██║   ██║███████║
+██   ██║██║   ██║╚════██║██╔══██║██║   ██║██╔══██║
+╚█████╔╝╚██████╔╝███████║██║  ██║╚██████╔╝██║  ██║
+ ╚════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div class="section" id="my-first-post"&gt;
-&lt;h2&gt;My First Post&lt;/h2&gt;
+&lt;div class="section" id="adding-my-custom-title"&gt;
+&lt;h2&gt;Adding my custom title&lt;/h2&gt;
 &lt;p&gt;I have been composing this first post as I have established this blog, in the end, I decided to opt for a different theme then the one I spent so long diagnosing.&lt;/p&gt;
+&lt;p&gt;Once I had selected my choice of font for the title, I had to make changes to the theme to add it to the site header. This is because the blog content is only responsible for the static content of posts and pages rather than the look of the site itself. I moved the theme folder I had chosen into my blog source repository and installed it via symbolic link with pelican-themes. Then I could edit the HTML templates provided by the theme to add my custom title and keep my changes in version control.&lt;/p&gt;
+&lt;p&gt;Jinja templating is used to pass parameters from the blog content to the theme, I wanted to see if I could add my bespoke parameter for passing the title word art I had selected. Configuration used by pelican is set in 'pelicanconf.py' and that includes configuration for the theme as well. It is just a python file so I added the follow code alongside the generated configuration. Here is the relevant snippet:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pyfiglet&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Figlet&lt;/span&gt;
+&lt;span class="n"&gt;figlet&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Figlet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ansi_shadow&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# custom settings are prefaced with CUSTOM_&lt;/span&gt;
+
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Joshua Achermann&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Joshua Achermann&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CUSTOM_TITLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;figlet&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;renderText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SITENAME&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This allows me to use the value in the template for the title , this theme has it in an include called 'jumbotron.html'. The file is small enough to include in full. I added a condition that checks for the presence of my custom parameter 'CUSTOM_TITLE' and includes a pre formatted section to display it. If the custom parameter is not present, it falls back to its original behaviour of including the site name variable directly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;jumbotron&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;overview&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;container&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      {% if CUSTOM_TITLE %}
+      &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;pre&lt;/span&gt; &lt;span class="na"&gt;aria-hidden&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ CUSTOM_TITLE }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;pre&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      {% else %}
+      {{ SITENAME }}
+      {% endif %}
+      {% if SITESUBTITLE %}
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lead&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;{{ SITESUBTITLE }}&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;p&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+      {% endif %}
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="creating-posts"&gt;
+&lt;h2&gt;Creating posts&lt;/h2&gt;
+&lt;p&gt;Pelican supports markup languages reStructedText and Markdown for writing blog articles, others may be supported through plugins but I wanted to stick to the well trodden paths so I would choose between these two. I had used Markdown before (many README files are composed in Markdown) and liked it quite a lot, but I decided to write my blog entries in reStructedText (rst) in order to learn it properly as it is used extensively in Python documentation. This very post was crafted in a rst file
+(very meta I am aware). All blog content including static resources are stored in a subfolder called 'content', itself containing other subfolders such as 'images' or 'pages'. This directory structure can be changed but 'pelicanconf.py' contains settings that need to be updated to reflect these changes. In my setup, there is a content subfolder called 'posts' which will contain all the blog article rst files.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="publishing-to-github-pages"&gt;
 &lt;h2&gt;Publishing to GitHub Pages&lt;/h2&gt;
 &lt;p&gt;I followed the instructions on this page &lt;a class="reference external" href="https://pages.github.com/"&gt;https://pages.github.com/&lt;/a&gt; to create a repo for my GitHub Page and then followed the instructions in the &lt;a class="reference external" href="https://docs.getpelican.com/en/latest/tips.html#publishing-a-project-site-to-github-pages-from-a-branch"&gt;publishing a project site to GitHub Pages from a Branch&lt;/a&gt; to publish to it.&lt;/p&gt;
+&lt;p&gt;The first time you are going to publish you need to enable the GitHub Page setting in the repository settings as described &lt;a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-your-site"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="python"></category><category term="blog"></category><category term="python"></category><category term="pelican"></category><category term="pyfiglet"></category></entry></feed>

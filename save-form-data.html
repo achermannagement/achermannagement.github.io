@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Joshua Achermann" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
+
+    <title>How to save website form data - Joshua Achermann</title>
+
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
+
+
+      <link rel="stylesheet" href="/theme/css/pygment.css" />
+      <link rel="stylesheet" href="/theme/css/voidybootstrap.css" />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+              <li>
+                <a href="/pages/about.html">About</a>
+              </li>
+              <li>
+                <a href="/pages/portfolio.html">Portfolio</a>
+              </li>
+            <li class="divider"></li>
+            <li class="">
+              <a href="/archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
+
+  <div class="jumbotron" id="overview">
+    <div class="container">
+        <pre aria-hidden="true">     ██╗ ██████╗ ███████╗██╗  ██╗██╗   ██╗ █████╗ 
+     ██║██╔═══██╗██╔════╝██║  ██║██║   ██║██╔══██╗
+     ██║██║   ██║███████╗███████║██║   ██║███████║
+██   ██║██║   ██║╚════██║██╔══██║██║   ██║██╔══██║
+╚█████╔╝╚██████╔╝███████║██║  ██║╚██████╔╝██║  ██║
+ ╚════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+                                                  
+ █████╗  ██████╗██╗  ██╗███████╗██████╗ ███╗   ███╗ █████╗ ███╗   ██╗███╗   ██╗
+██╔══██╗██╔════╝██║  ██║██╔════╝██╔══██╗████╗ ████║██╔══██╗████╗  ██║████╗  ██║
+███████║██║     ███████║█████╗  ██████╔╝██╔████╔██║███████║██╔██╗ ██║██╔██╗ ██║
+██╔══██║██║     ██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══██║██║╚██╗██║██║╚██╗██║
+██║  ██║╚██████╗██║  ██║███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║██║ ╚████║
+╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝
+                                                                               
+</pre>
+    <p class="lead">A personal blog</p>
+    </div>
+  </div>
+
+    <div class="container" id="main-container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
+<abbr class="article-header-date">
+  Fri 24 May 2024
+</abbr> <h1>
+  <a href="/save-form-data.html" rel="bookmark"
+     title="Permalink to How to save website form data">
+    How to save website form data
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="/author/joshua-achermann.html">Joshua Achermann</a>
+    in 
+    <a href="/category/automation.html">
+      automation</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<div class="section" id="i-want-it-to-be-simple">
+<h2>I want it to be simple</h2>
+<p>Continuing in my pattern of attempting things that seem simple at first, but turn into a rabbit hole. I was filling out a (single page) web form that was quite long and I needed to pause my progress, I wanted to capture my responses so that if accidently closed the page, I didn't lose my responses. Also I thought it would be good forward planning to keep a copy of my responses myself.</p>
+<p>Of course, it is possible to copy and paste each response individually, but this is exactly the sort of repetitive toil I try to excise from my life.</p>
+</div>
+<div class="section" id="the-initial-attempt">
+<h2>The Initial Attempt</h2>
+<p>Sometimes the simplest solution works so we will try it. To select all  page elements, the shortcut Ctrl+A works in many circumstances. Using the shortcut on our completed form, we want to see whether the input is also selected.</p>
+<p>Unfortunately, this approach doesn't work as it only selects elements of the form itself and doesn't include my responses.</p>
+</div>
+<div class="section" id="autofilled-forms">
+<h2>Autofilled forms?</h2>
+<p>Firefox and Chrome support autofill of forms for certain fields of the form which is great for repeated entry of your address etc. This usage is slightly different than what I wanted because I want to save all fields in a given form I am currently filling out, including fields that have never been seen before.</p>
+</div>
+<div class="section" id="extensions">
+<h2>Extensions?</h2>
+<p>There are extensions which improve the experience of filling in longer forms, the main one I am aware of is <a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/form-history-control/">Form History Control</a>.</p>
+</div>
+<div class="section" id="copying-the-html">
+<h2>Copying the HTML</h2>
+<p>Let us look at the options for us built-in to the browser. These options both use the Developer Tools.</p>
+<p>After I thought about why this happening, it made sense to me pretty quickly that copying the HTML markup was not going to return my responses. HTML is a markup language which defines the structure of webpages, it really doesn't concern itself with the interactivity of the webpage when it is being displayed by the web browser. We need to find a way to access the document as it is being presented by the browser.</p>
+</div>
+<div class="section" id="accessing-the-dom">
+<h2>Accessing the DOM</h2>
+<p>We can also access the DOM (Document Object Model) using the Developer Tools. It is an interface that lends itself to accessing the data of the objects that are present in the webpage as it being displayed. I created a small Javascript snippet that returns the contents of all input fields of selected element kinds.</p>
+<ul class="simple">
+<li>&lt;input&gt; elements need to be selected as most user input occurs in them</li>
+<li>&lt;textarea&gt; elements can be writable so we should grab their contents</li>
+<li>&lt;select&gt; elements need to be included as dropdown selections use them</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">formFields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;input, textarea, select&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fieldData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="nx">formFields</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">field</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">fieldData</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">field</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">field</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">autoname</span><span class="o">:</span><span class="w"> </span><span class="nx">field</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">newWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fieldData</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">obj</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">);</span>
+<span class="nx">newWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">formatted</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">})();</span>
+</pre></div>
+<p>I have tested this code snippets with standard HTML forms as , then I tested it with some forms created in Google Forms as that is very popular. The form that trigger this inquiry was actually created by Cognito, I hadn't heard about this company before. It presented some problems with my first attempt at this code; the name attribute of the final output objects were not defined. I eventually found that there is an autocomplete attribute that contained the name of the
+given field so I simply included that in the dump as well.</p>
+<p>Now we have Javascript code that accesses the DOM to get the content of input fields in a good variety of cases, how do we package it for easy usage?</p>
+</div>
+<div class="section" id="bookmarklets">
+<h2>Bookmarklets</h2>
+<p>A bookmarklet is a Javascript script that can run on click, similar to how a normal bookmark will trigger the browser to load the linked website.</p>
+<p>Overall, it is a great idea. Once I have my code snippet inside the URI for the bookmarklet, it will open a new window with the list of objects (map containing the name, value and autocomplete) of the selected fields printed. The only thing I can complain about is that the entry for the bookmark URI is not designed to handle multiline input (because most bookmarket targets are usually a single line URL of course) so the developer UX leaves a lot to be desired.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Although, I could definitely improve the accessibility of using my bookmarklet (the output format of the form response dump is a bit ugly), I decided I was happy enough with the outcome of this exercise. I now get a simple dump of the name of the input elements along with their contents.</p>
+<p>Some improvements I could envision myself making:</p>
+<ul class="simple">
+<li>Iterating over the document top to bottom, dumping all HTML content alongside the field contents</li>
+<li>Pretty printing the field data objects</li>
+<li>Adding more metadata in the field data objects .eg types</li>
+</ul>
+</div>
+
+  </div>
+  
+
+</article>
+        </div><!-- /content -->
+
+        <div class="col-md-3 sidebar-nav" id="sidebar">
+
+<div class="row">
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
+<ul class="list-unstyled social-links">
+    <li><a href="https://www.linkedin.com/in/joshua-achermann-13609b15b/" target="_blank">
+	  <i class="fa fa-linkedin-square fa-fw fa-lg" title="LinkedIn"></i>
+		LinkedIn
+	</a></li>
+    <li><a href="http://github.com/achermannagement" target="_blank">
+	  <i class="fa fa-github-square fa-fw fa-lg" title="GitHub"></i>
+		GitHub
+	</a></li>
+</ul>
+</div>
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-folder fa-fw fa-lg"></i> Categories</h4>
+<ul class="list-unstyled category-links">
+  <li><a href="/category/automation.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> automation</a></li>
+  <li><a href="/category/python.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> python</a></li>
+</ul>
+</div>
+
+</div> <!-- /row -->
+
+
+
+<hr />
+
+        </div><!--/sidebar -->
+      </div><!--/row-->
+    </div><!--/.container /#main-container -->
+
+    <footer id="site-footer">
+ 
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
+
+
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
